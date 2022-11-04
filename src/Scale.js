@@ -1,16 +1,13 @@
+const _ = require('lodash')
 class Scale {
-    static listempty = [];
-    static weighterr=[1,3];
     constructor() {
-        let num = 12;
-        let weight = 2;
-        for(let i=0;i<num;i++){
-            Scale.listempty.push(weight);
+        this.list = [];
+        this.weight = 2;
+        this.weighterr=[1,3];
+        for(let i=0;i<12;i++){
+            this.list.push(this.weight);
         }
-        Scale.listempty[Math.floor(Math.random()*Scale.listempty.length)]=Scale.weighterr[Math.floor(Math.random()*Scale.weighterr.length)];
-    }
-    getlist() {
-        return Scale.listempty; 
+        this.list[Math.floor(Math.random()*this.list.length)]=this.weighterr[Math.floor(Math.random()*this.weighterr.length)];
     }
     static weight(left,right){
         let leftweight=0;
@@ -28,11 +25,12 @@ class Scale {
         else
             return {leftweight:'Bang',rightweight:'Bang'};
     }
-    static CheckResult(Listofcoin) {
+    static CheckResult(Listofcoin,result) {
         for (let i = 0; Listofcoin.length; i++) {
-        if (Listofcoin[i]>2) return {Nang: i+1};
-        if(Listofcoin[i]<2) return {Nhe: i+1};
+            if (Listofcoin[i]>2) return _.isEqual({Nang: i+1},result);
+            if(Listofcoin[i]<2) return _.isEqual({Nhe: i+1},result);
         }
+
   }
                 
 }

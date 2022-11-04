@@ -1,14 +1,10 @@
-/* eslint-disable no-shadow */
-const Scale = require('./Scale');
-
-const Listofcoin = new Scale().getlist();
-// eslint-disable-next-line no-console
-console.log(Listofcoin);
-const left = [Listofcoin[0], Listofcoin[1], Listofcoin[2], Listofcoin[3]];
-const right = [Listofcoin[4], Listofcoin[5], Listofcoin[6], Listofcoin[7]];
+const Scale  = require('./Scale.js');
+const _= require('lodash');
 
 function FindErrcoin(Listofcoin) {
-  const Firstweigh = Scale.weight(left, right);
+  const left = [Listofcoin[0], Listofcoin[1], Listofcoin[2], Listofcoin[3]];
+  const right = [Listofcoin[4], Listofcoin[5], Listofcoin[6], Listofcoin[7]];
+  const Firstweigh = Scale.weight(left,right);
   if (Firstweigh.leftweight === 'Bang') {
     const left = [Listofcoin[0], Listofcoin[1], Listofcoin[2]];
     const right = [Listofcoin[8], Listofcoin[9], Listofcoin[10]];
@@ -21,7 +17,6 @@ function FindErrcoin(Listofcoin) {
       return { Nang: 12 };
     }
     if (Secondweigh.leftweight === 'Nang') {
-      // coin loi nhe
       const left = [Listofcoin[8]];
       const right = [Listofcoin[9]];
       const Thirdweigh = Scale.weight(left, right);
@@ -34,7 +29,6 @@ function FindErrcoin(Listofcoin) {
       return {
         Nhe: 11,
       };
-    // eslint-disable-next-line no-else-return
     } else {
       const left = [Listofcoin[8]];
       const right = [Listofcoin[9]];
@@ -143,11 +137,11 @@ function FindErrcoin(Listofcoin) {
     }
   }
 }
-function ss(a, b) {
-  return a.Nang == b.Nang;
-}
-const a = Scale.CheckResult(Listofcoin);
-const b = FindErrcoin(Listofcoin);
-console.log(a);
-console.log(b);
-console.log(ss(a, b));
+// let count=0;
+// for(let i=1;i<1000;i++){
+//   const scale = new Scale()
+//   const Listofcoin=scale.list
+//   const checkrs=Scale.CheckResult(Listofcoin,FindErrcoin(Listofcoin))
+//   console.log(checkrs)
+// }
+module.exports= FindErrcoin;
