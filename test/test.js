@@ -1,16 +1,17 @@
- const assert = require('assert').strict;   // Using Assert style
-const { should }= require ('chai');
-const Scale =require('../src/Scale');
-const FindErrcoin =require('../src/Findbalance');
-const _ = require('lodash')
-;
-should();
+import assert from ('assert').strict;   // Using Assert style
+import Scale from '../src/Scale.js';
+import FindErrcoin from '../src/Findbalance.js';
+const _ = require('lodash');
 describe('Scale',function(){
-    describe('Test create list of coin',()=>{
-        it('Should be create a list has 11 coin normal and 1 coin err',()=>{    
-            const scale = new Scale();
-            assert(scale.list.length==12);
-        })        
+    describe('Scale', () => {
+        it('Should be create a list has 12 coin within 11 coin err', () => {
+          const scale = new Scale();
+          const listcoin = scale.list;
+          const countcoin = _.countBy(listcoin);
+          assert.strictEqual(listcoin.length, 12);
+          assert.strictEqual(countcoin[2], 11);
+        });
+             
     });
     describe('Test Weigh in scale',()=>{
         it('Should be return leftwirght and rightweight nang, nhe or bang',()=>{    

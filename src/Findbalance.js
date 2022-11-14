@@ -1,10 +1,11 @@
-const Scale  = require('./Scale.js');
-const _= require('lodash');
+import Scale from './Scale.js';
+
+const _ = require('lodash');
 
 function FindErrcoin(Listofcoin) {
   const left = [Listofcoin[0], Listofcoin[1], Listofcoin[2], Listofcoin[3]];
   const right = [Listofcoin[4], Listofcoin[5], Listofcoin[6], Listofcoin[7]];
-  const Firstweigh = Scale.weight(left,right);
+  const Firstweigh = Scale.weight(left, right);
   if (Firstweigh.leftweight === 'Bang') {
     const left = [Listofcoin[0], Listofcoin[1], Listofcoin[2]];
     const right = [Listofcoin[8], Listofcoin[9], Listofcoin[10]];
@@ -144,4 +145,4 @@ function FindErrcoin(Listofcoin) {
 //   const checkrs=Scale.CheckResult(Listofcoin,FindErrcoin(Listofcoin))
 //   console.log(checkrs)
 // }
-module.exports= FindErrcoin;
+export default FindErrcoin;
